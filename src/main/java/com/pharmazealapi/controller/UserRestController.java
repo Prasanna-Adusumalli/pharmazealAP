@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path="user")
@@ -22,6 +24,10 @@ public class UserRestController {
     @PostMapping(path="details")
     public UserDTO getUserDetails(@RequestBody CredentialsDTO credentialsDTO){
         return userService.getUserDetails(credentialsDTO);
+    }
+
+    public List<UserDTO> getAllUsers(){
+        return null;
     }
 
 }

@@ -14,13 +14,14 @@ import lombok.Setter;
 @Table(name="drug")
 public class Drug {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "drug_id")
-    private int drugId;
-    @Column(name = "name")
+    private String drugId;
+    @Column(name = "drug_name")
     private String name;
     @Column(name = "health_condition")
     private String healthCondition;
     @Column(name = "id_check")
     private String idCheck;
+    @Column(name = "price")
+    private int price;
 }

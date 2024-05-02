@@ -3,7 +3,6 @@ package com.pharmazealapi.controller;
 import com.pharmazealapi.dto.DrugDTO;
 import com.pharmazealapi.dto.NotificationDTO;
 import com.pharmazealapi.service.DrugService;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping(path="drugs")
 @AllArgsConstructor
-public class DrugRestController {
+public class DrugController {
     @Autowired
     private DrugService drugService;
 

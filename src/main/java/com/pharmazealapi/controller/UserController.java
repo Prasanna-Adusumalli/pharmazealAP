@@ -13,9 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping(path="user")
 @AllArgsConstructor
-public class UserRestController {
+public class UserController {
+
     @Autowired
     private UserService userService;
+
     @PostMapping(path="login")
     public boolean loginAccount(@RequestBody CredentialsDTO credentialsDTO){
         return userService.login(credentialsDTO);
@@ -26,8 +28,20 @@ public class UserRestController {
         return userService.getUserDetails(credentialsDTO);
     }
 
-    public List<UserDTO> getAllUsers(){
-        return null;
+    @GetMapping(path="all")
+    public List<UserDTO> getAllUserDetails(){
+        return userService.getAllUserDetails();
+    }
+
+    @GetMapping(path="employee")
+    public List<UserDTO> getAllEmployeeDetails(){
+        return userService.getAllEmployeeDetails();
+    }
+
+
+    @DeleteMapping(path="delete/employee/{id}")
+    public boolean deleteEmployee(@PathVariable() int id){
+        return userService.deleteEmployee(id);
     }
 
 }

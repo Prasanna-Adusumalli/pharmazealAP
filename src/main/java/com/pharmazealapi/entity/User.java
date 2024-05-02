@@ -26,6 +26,7 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private String status;
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;

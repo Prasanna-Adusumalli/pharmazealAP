@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name="location")
 public class Location {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id")
     private int locationId;
     @Column(name = "location_name")

@@ -44,9 +44,7 @@ CREATE TABLE drug_availability
     location_id	integer,
     availability	VARCHAR(8),
     quantity integer,
-    expiry_date DATE,
-    foreign key (location_id) references location (location_id),
-    foreign key (drug_id) references drug(drug_id)
+    expiry_date DATE
 );
 
 CREATE TABLE address

@@ -1,1 +1,1 @@
-# pharmazealAP
+# pharmazealAPI

@@ -38,8 +38,18 @@ public class DTOFactory {
     }
 
     public SalesDTO createSalesDTO(Sales sales,Location Location,Customer customer,User user, Double price, List<SalesItemDTO> itemList) {
+        String drugList="";
+        int count=0;
+        for(SalesItemDTO dto:itemList){
+            if(count==0){
+                drugList=dto.getDrugName();
+            }
+            else{
+            drugList=drugList+", "+ dto.getDrugName();}
+            count+=1;
+        }
         return new SalesDTO(sales.getSalesId(), Location.getLocationName(), customer.getNhsNumber(),
-                customer.getFullName(), itemList, price.doubleValue(), user.getUserId(), user.getName(),
+                customer.getFullName(),drugList, itemList, price.doubleValue(), user.getUserId(), user.getName(),
                 sales.getIdVerified(), sales.getSalesDate());
     }
 

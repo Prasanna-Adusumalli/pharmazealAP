@@ -23,7 +23,7 @@ public class CustomerService {
     private final LocationRepository locationRepository;
     @Autowired
     private DTOFactory dtoFactory;
-
+   //To get list of all the customers based on location
     public List<CustomerDTO> getCustomersByLocation(String locationName){
         List<CustomerDTO> customerDTOList=new ArrayList<>();
         Location location =locationRepository.findByLocationNameEqualsIgnoreCase(locationName).orElse(null);

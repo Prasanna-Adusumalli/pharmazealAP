@@ -7,10 +7,10 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.List;
 
-@AllArgsConstructor
 @Getter
 @Setter
-public class SalesDTO {
+@AllArgsConstructor
+public class NewSaleDTO {
     private final int salesId;
     private final String location;
     private final int customerNHS;

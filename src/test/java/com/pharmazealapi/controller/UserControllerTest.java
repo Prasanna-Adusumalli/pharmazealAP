@@ -2,9 +2,7 @@ package com.pharmazealapi.controller;
 
 import com.pharmazealapi.entity.Location;
 import com.pharmazealapi.entity.User;
-import com.pharmazealapi.repository.CustomerRepository;
-import com.pharmazealapi.repository.LocationRepository;
-import com.pharmazealapi.repository.UserRepository;
+import com.pharmazealapi.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,8 +33,24 @@ class UserControllerTest {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    SalesRepository salesRepository;
+
+    @Autowired
+    SalesItemRepository salesItemRepository;
+
+    @Autowired
+    ExistingPrescriptionRepository existingPrescriptionRepository;
+
+    @Autowired
+    DrugAvailabilityRepository availabilityRepository;
+
     @Test
     void whenValidUserLogins() throws Exception {
+        availabilityRepository.deleteAll();
+        existingPrescriptionRepository.deleteAll();
+        salesItemRepository.deleteAll();
+        salesRepository.deleteAll();
         userRepository.deleteAll();
         customerRepository.deleteAll();
         locationRepository.deleteAll();
@@ -60,6 +72,10 @@ class UserControllerTest {
 
     @Test
     void whenInactiveUserLogins() throws Exception {
+        availabilityRepository.deleteAll();
+        existingPrescriptionRepository.deleteAll();
+        salesItemRepository.deleteAll();
+        salesRepository.deleteAll();
         userRepository.deleteAll();
         customerRepository.deleteAll();
         locationRepository.deleteAll();
@@ -81,6 +97,10 @@ class UserControllerTest {
 
     @Test
     void whenInvalidUserLogins() throws Exception {
+        availabilityRepository.deleteAll();
+        existingPrescriptionRepository.deleteAll();
+        salesItemRepository.deleteAll();
+        salesRepository.deleteAll();
         userRepository.deleteAll();
         customerRepository.deleteAll();
         locationRepository.deleteAll();

@@ -25,7 +25,7 @@ public class DrugService {
     private final DrugAvailabilityRepository availabilityRepository;
     @Autowired
     private DTOFactory dtoFactory;
-
+    // To get drug list by location
     public List<DrugDTO> getDrugsByLocation(String locationName){
         List<DrugDTO> drugDTOList=new ArrayList<>();
         Location location=locationRepository.findByLocationNameEqualsIgnoreCase(locationName).orElse(null);
@@ -38,6 +38,7 @@ public class DrugService {
         return drugDTOList;
     }
 
+    //To generate notifications in case the quantity is less than 10 or stock is expired
     public List<NotificationDTO> generateNotifications(String locationName){
         List<NotificationDTO> notificationDTOList=new ArrayList<>();
         Location location=locationRepository.findByLocationNameEqualsIgnoreCase(locationName).orElse(null);

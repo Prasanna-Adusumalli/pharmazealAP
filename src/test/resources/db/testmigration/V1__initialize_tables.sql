@@ -44,7 +44,9 @@ CREATE TABLE drug_availability
     location_id	integer,
     availability	VARCHAR(8),
     quantity integer,
-    expiry_date DATE
+    expiry_date DATE,
+    foreign key (location_id) references location (location_id),
+    foreign key (drug_id) references drug(drug_id)
 );
 
 CREATE TABLE address
@@ -104,6 +106,7 @@ CREATE TABLE existing_prescription
     drug_id	VARCHAR(32),
     quantity integer,
     location_id	integer,
+    status VARCHAR(32),
     foreign key (customer_nhs_number) references customer(nhs_number),
     foreign key (drug_id) references drug(drug_id),
     foreign key (location_id) references location(location_id)
@@ -4086,28 +4089,28 @@ INSERT INTO sales_item (sale_item_id, sales_id, drug_id, quantity, price) VALUES
 INSERT INTO sales_item (sale_item_id, sales_id, drug_id, quantity, price) VALUES (77, 510, 'd12', 9, 15);
 
 
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (1, 2024032, 'd95', 5, 1);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (2, 2024038, 'd83', 8, 1);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (3, 2024034, 'd84', 4, 1);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (4, 2024036, 'd99', 6, 1);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (5, 2024040, 'd90', 9, 1);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (6, 2024028, 'd96', 5, 2);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (7, 2024022, 'd98', 8, 2);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (8, 2024026, 'd94', 4, 2);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (9, 2024024, 'd94', 6, 2);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (10, 2024030, 'd98', 9, 2);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (11, 2024012, 'd99', 5, 3);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (12, 2024015, 'd98', 8, 3);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (13, 2024016, 'd95', 4, 3);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (14, 2024019, 'd93', 6, 3);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (15, 2024020, 'd98', 9, 3);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (16, 2024044, 'd98', 5, 4);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (17, 2024042, 'd96', 8, 4);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (18, 2024048, 'd99', 4, 4);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (19, 2024049, 'd96', 6, 4);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (20, 2024050, 'd96', 9, 4);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (21, 2024004, 'd99', 5, 5);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (22, 2024002, 'd98', 8, 5);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (23, 2024006, 'd95', 4, 5);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (24, 2024008, 'd98', 6, 5);
-INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id) VALUES (25, 2024010, 'd98', 9, 5);
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (1, 2024032, 'd95', 5, 1, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (2, 2024038, 'd83', 8, 1, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (3, 2024034, 'd84', 4, 1, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (4, 2024036, 'd99', 6, 1, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (5, 2024040, 'd90', 9, 1, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (6, 2024028, 'd96', 5, 2, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (7, 2024022, 'd98', 8, 2, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (8, 2024026, 'd94', 4, 2, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (9, 2024024, 'd94', 6, 2, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (10, 2024030, 'd98', 9, 2, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (11, 2024012, 'd99', 5, 3, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (12, 2024015, 'd98', 8, 3, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (13, 2024016, 'd95', 4, 3, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (14, 2024019, 'd93', 6, 3, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (15, 2024020, 'd98', 9, 3, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (16, 2024044, 'd98', 5, 4, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (17, 2024042, 'd96', 8, 4, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (18, 2024048, 'd99', 4, 4, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (19, 2024049, 'd96', 6, 4, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (20, 2024050, 'd96', 9, 4, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (21, 2024004, 'd99', 5, 5, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (22, 2024002, 'd98', 8, 5, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (23, 2024006, 'd95', 4, 5, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status) VALUES (24, 2024008, 'd98', 6, 5, 'ACTIVE');
+INSERT INTO existing_prescription (prescription_id, customer_nhs_number, drug_id, quantity, location_id, status ) VALUES (25, 2024010, 'd98', 9, 5, 'ACTIVE');

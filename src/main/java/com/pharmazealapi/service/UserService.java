@@ -23,8 +23,9 @@ public class UserService {
     @Autowired
     private final DTOFactory dtoFactory;
     public UserDTO getUserDetails(CredentialsDTO credentialsDTO){
-        return dtoFactory.createUserDTO(userRepository.findByEmail(credentialsDTO.getEmail()).get());
+        return dtoFactory.createUserDTO(userRepository.findByEmail(credentialsDTO.getEmail()).orElse(null));
     }
+    // to verify login is successful or not
     public boolean login(CredentialsDTO credentialsDTO){
         if(credentialsDTO.getEmail()!=null && credentialsDTO.getPassword()!=null) {
             User user = userRepository.findByEmail(credentialsDTO.getEmail()).orElse(null);
@@ -34,7 +35,7 @@ public class UserService {
         }
         return false;
     }
-
+   //To get list of all users
     public List<UserDTO> getAllUserDetails(){
         List<User> userList=userRepository.findAll();
         List<UserDTO> userDTOList=new ArrayList<>();
@@ -44,7 +45,7 @@ public class UserService {
         }
         return userDTOList;
     }
-
+    //To get list of only employees
     public List<UserDTO> getAllEmployeeDetails(){
         List<User> userList=userRepository.findAllByRole(String.valueOf(Role.employee));
         List<UserDTO> userDTOList=new ArrayList<>();
@@ -53,7 +54,7 @@ public class UserService {
         }
         return userDTOList;
     }
-
+    //To delete a employee
     public boolean deleteEmployee(int id){
         int recordDeleted= userRepository.deleteByUserId(id);
         if(recordDeleted==1)

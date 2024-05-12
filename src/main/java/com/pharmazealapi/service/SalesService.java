@@ -23,7 +23,7 @@ public class SalesService {
     private final UserRepository userRepository;
     @Autowired
     private DTOFactory dtoFactory;
-
+  // To get list of sales based on location
     public List<SalesDTO> getSalesByLocation(String locationName){
         List<SalesDTO> salesDTOList=new ArrayList<>();
         Location location=locationRepository.findByLocationNameEqualsIgnoreCase(locationName).orElse(null);

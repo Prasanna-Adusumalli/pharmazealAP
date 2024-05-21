@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -36,6 +37,11 @@ public class DrugService {
             drugDTOList.add(dtoFactory.createDrugDTO(drug,drugAvailability));
         }
         return drugDTOList;
+    }
+
+    public Drug getDrugsByNameAndCondition(String name, String condition, String locationName){
+        Drug drug=drugRepository.findByNameAndAndHealthCondition(name,condition).get();
+        return drug;
     }
 
     //To generate notifications in case the quantity is less than 10 or stock is expired

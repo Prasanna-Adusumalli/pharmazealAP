@@ -1,6 +1,7 @@
 package com.pharmazealapi.controller;
 
 import com.pharmazealapi.dto.DrugDTO;
+import com.pharmazealapi.dto.NewSaleDTO;
 import com.pharmazealapi.dto.SalesDTO;
 import com.pharmazealapi.service.DrugService;
 import com.pharmazealapi.service.SalesService;
@@ -24,6 +25,12 @@ public class SalesController {
     public List<SalesDTO> getSalesByLocation(@PathVariable("location") String location) {
         List<SalesDTO> salesDTOList = salesService.getSalesByLocation(location);
         return salesDTOList;
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/add")
+    public boolean addSales(@RequestBody NewSaleDTO newSaleDTO) {
+        return salesService.addSales(newSaleDTO);
     }
 
 }

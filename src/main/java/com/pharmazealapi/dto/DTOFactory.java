@@ -57,4 +57,9 @@ public class DTOFactory {
         return new NotificationDTO(message);
     }
 
+    public PrescriptionDTO createPrescriptionDTO(ExistingPrescription prescription, String location,Drug drug, Customer customer){
+        return new PrescriptionDTO(prescription.getId(), customer.getNhsNumber()
+                ,customer.getFullName(),drug.getDrugId(), drug.getName(),prescription.getQuantity(),location );
+    }
+
 }

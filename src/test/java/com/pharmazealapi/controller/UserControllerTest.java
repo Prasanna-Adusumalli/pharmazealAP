@@ -122,6 +122,13 @@ class UserControllerTest {
 
     @Test
     void getUserDetails() {
+        availabilityRepository.deleteAll();
+        existingPrescriptionRepository.deleteAll();
+        salesItemRepository.deleteAll();
+        salesRepository.deleteAll();
+        userRepository.deleteAll();
+        customerRepository.deleteAll();
+        locationRepository.deleteAll();
     }
 
     @Test

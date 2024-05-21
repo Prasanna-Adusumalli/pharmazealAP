@@ -78,9 +78,10 @@ CREATE TABLE customer
 
 CREATE TABLE sales
 (
-    sales_id integer primary key,
+    sales_id integer primary key auto_increment,
     location_id	integer,
     customer_nhs integer,
+    customer_name VARCHAR(32),
     employee_id	integer,
     id_verified	VARCHAR(8),
     sales_date	DATE,
@@ -91,7 +92,7 @@ CREATE TABLE sales
 
 CREATE TABLE sales_item
 (
-    sale_item_id integer primary key,
+    sale_item_id integer AUTO_INCREMENT primary key,
     sales_id	integer,
     drug_id	VARCHAR(32),
     quantity integer,
@@ -3956,7 +3957,7 @@ INSERT INTO customer (nhs_number, date_of_birth, last_name, first_name, gender, 
 INSERT INTO customer (nhs_number, date_of_birth, last_name, first_name, gender, is_vulnerable, address_id, location_id, allergitic_drug, medical_condition) VALUES (2024048, '2001-01-20', 'Himki', 'Waisf', 'Male', 'N', 48, 4, '', '');
 INSERT INTO customer (nhs_number, date_of_birth, last_name, first_name, gender, is_vulnerable, address_id, location_id, allergitic_drug, medical_condition) VALUES (2024049, '1995-01-21', 'Brayan', 'King', 'Male', 'N', 49, 4, '', '');
 INSERT INTO customer (nhs_number, date_of_birth, last_name, first_name, gender, is_vulnerable, address_id, location_id, allergitic_drug, medical_condition) VALUES (2024050, '2015-09-11', 'Maryam', 'Houg', 'Male', 'Y', 50, 4, '', '');
-
+INSERT INTO customer (nhs_number, date_of_birth, last_name, first_name, gender, is_vulnerable, address_id, location_id, allergitic_drug, medical_condition) VALUES (1, null, null, null, null, null, 1, 1, '', '');
 
 INSERT INTO sales (sales_id, location_id, customer_nhs, employee_id, id_verified, sales_date) VALUES (101, 1, 2024033, 2, 'N', '2024-01-23');
 INSERT INTO sales (sales_id, location_id, customer_nhs, employee_id, id_verified, sales_date) VALUES (102, 1, 2024035, 2, 'N', '2024-01-23');

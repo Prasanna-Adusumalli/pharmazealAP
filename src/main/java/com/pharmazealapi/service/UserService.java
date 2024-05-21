@@ -2,8 +2,12 @@ package com.pharmazealapi.service;
 
 import com.pharmazealapi.dto.CredentialsDTO;
 import com.pharmazealapi.dto.DTOFactory;
+import com.pharmazealapi.dto.NewUserDTO;
 import com.pharmazealapi.dto.UserDTO;
+import com.pharmazealapi.entity.EntityFactory;
+import com.pharmazealapi.entity.Location;
 import com.pharmazealapi.entity.User;
+import com.pharmazealapi.repository.LocationRepository;
 import com.pharmazealapi.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -18,10 +22,13 @@ import java.util.List;
 @AllArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final LocationRepository locationRepository;
     private final String active="ACTIVE";
     enum Role{admin,employee};
     @Autowired
     private final DTOFactory dtoFactory;
+    @Autowired
+    private final EntityFactory entityFactory;
     public UserDTO getUserDetails(CredentialsDTO credentialsDTO){
         return dtoFactory.createUserDTO(userRepository.findByEmail(credentialsDTO.getEmail()).orElse(null));
     }
@@ -60,5 +67,10 @@ public class UserService {
         if(recordDeleted==1)
             return true;
         return false;
+    }
+
+    public void createNewUser(NewUserDTO newUserDTO){
+        Location location=locationRepository.findByLocationNameEqualsIgnoreCase(newUserDTO.getLocation()).get();
+        userRepository.save(entityFactory.createNewUser(location,newUserDTO));
     }
 }

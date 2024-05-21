@@ -1,6 +1,7 @@
 package com.pharmazealapi.controller;
 
 import com.pharmazealapi.dto.CredentialsDTO;
+import com.pharmazealapi.dto.NewUserDTO;
 import com.pharmazealapi.dto.UserDTO;
 import com.pharmazealapi.service.UserService;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,11 @@ public class UserController {
     @PostMapping(path="details")
     public UserDTO getUserDetails(@RequestBody CredentialsDTO credentialsDTO){
         return userService.getUserDetails(credentialsDTO);
+    }
+
+    @PostMapping(path="create")
+    public void createNewUser(@RequestBody NewUserDTO newUserDTO){
+        userService.createNewUser(newUserDTO);
     }
 
     @GetMapping(path="all")

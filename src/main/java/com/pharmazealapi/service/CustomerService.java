@@ -29,7 +29,7 @@ public class CustomerService {
         Location location =locationRepository.findByLocationNameEqualsIgnoreCase(locationName).orElse(null);
         List<Customer> customerList=customerRepository.findAll();
         for(Customer customer:customerList){
-            if(location.getLocationId()==customer.getLocationId()) {
+            if(location.getLocationId()==customer.getLocationId()&& (customer.getNhsNumber()!=1)) {
                 Address address = addressRepository.findById(customer.getAddressId()).get();
                 customerDTOList.add(dtoFactory.createCustomerDTO(customer, address, location));
             }

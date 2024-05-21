@@ -1,9 +1,6 @@
 package com.pharmazealapi.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +16,15 @@ import java.util.Date;
 @Table(name="sales")
 public class Sales {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sales_id")
     private int salesId;
     @Column(name="location_id")
     private int locationId;
     @Column(name="customer_nhs")
     private int customerNHS;
+    @Column(name="customer_name")
+    private String customerName;
     @Column(name="employee_id")
     private int employeeId;
     @Column(name="id_verified")
